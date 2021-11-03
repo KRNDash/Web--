@@ -1,3 +1,4 @@
+{% from "/macros/btn2.twig" import btn as btn %}
 {% extends "__layout.twig" %}
 
 {% block content %}
@@ -6,7 +7,7 @@
         <ul class="nav nav-pills">
             <li class="list-group-item">
                 <a href="{{url}}/images" class="btn btn-link {{ is_image ? 'btn-primary' }}">Картинка</a>
-                <a href="{{url}}/info" class="btn btn-link {{ is_image ? 'btn-primary' }}">Описание</a>
+                <a href="{{url}}/info" class="btn btn-link {{ is_info ? 'btn-primary' }}">Описание</a>
             </li>
         </ul>
     </div>
