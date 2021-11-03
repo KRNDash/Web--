@@ -1,0 +1,33 @@
+<?php
+    $is_image = $url == '/shoushenka/images';
+    $is_info = $url == '/shoushenka/info';
+    $is_info_def = $url == '/shoushenka';
+?>
+
+<h1>Побег из Шоушенка</h1>
+<div>
+    <ul class="nav nav-pills">
+        <li class="nav-item d-flex flex-row">
+            <a class="nav-link <?= $is_image ? "active" : '' ?>" href="/shoushenka/images">
+                Картинка
+            </a>
+            <a class="nav-link <?= $is_info ? "active" : '' ?>" href="/shoushenka/info">
+                Описание
+            </a>
+        </li>
+    </ul>
+</div>
+
+<div class="wrapper">
+    <?php if ($is_image) { ?>
+        <img class="image_wrap" src="/images/pobeg.jpg" alt="Побег из Шоушенка">
+    <?php } else if ($is_info) { ?>
+        <div class="text_wrap">
+            Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни. Но Энди, обладающий живым умом и доброй душой, находит подход как к заключённым, так и к охранникам, добиваясь их особого к себе расположения.
+        </div>
+    <?php } else if ($is_info_def) { ?> 
+        <div class="text_wrap">
+            Выберите одну из категорий
+        </div>
+    <?php } ?> 
+</div>

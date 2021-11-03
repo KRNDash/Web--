@@ -1,0 +1,17 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h2 class="title_h2" style="color: white; margin-top: 20px;">{{title}}</h2>
+    <div>
+        <ul class="nav nav-pills">
+            <li class="list-group-item">
+                <a href="{{url}}/images" class="btn btn-link {{ is_image ? 'btn-primary' }}">Картинка</a>
+                <a href="{{url}}/info" class="btn btn-link {{ is_image ? 'btn-primary' }}">Описание</a>
+            </li>
+        </ul>
+    </div>
+    {% block objectContent %}
+    
+    {% endblock %}
+
+{% endblock %}

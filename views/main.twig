@@ -1,0 +1,16 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+<ul class="list-group" style="margin-top: 25px;">
+    {% for item in menu %}
+      {% if loop.index0 != 0 %}
+        <li class="list-group-item">
+        <!--так как item это словарик с двумя ключами, используем их для вывода ссылки -->
+          <a class="btn btn-primary" aria-current="page" href="{{item.url}}" class="{{ title == item.title ? 'active' }}">{{item.title}}</a>
+          <a class="btn btn-link" aria-current="page" href="{{item.url}}/images" class="{{ title == item.title ? 'active' }}">Картинка</a>
+          <a class="btn btn-link" aria-current="page" href="{{item.url}}/info" class="{{ title == item.title ? 'active' }}">Описание</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+</ul>
+{% endblock %}

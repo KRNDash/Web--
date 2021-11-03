@@ -1,0 +1,16 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+@mixin btn-active {
+    background-color: $bs-orange;
+    border-color: transparent;
+    color: $bs-gray-dark;
+    font-family: $font;
+    font-weight: 700;
+
+    &:hover {
+        background-color: lighten($bs-orange, 15);
+        border-color: transparent;
+        color: $bs-gray-dark;
+    }
+}
