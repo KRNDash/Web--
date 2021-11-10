@@ -7,9 +7,9 @@
       {% if loop.index0 != 0 %}
         <li class="list-group-item">
         <!--так как item это словарик с двумя ключами, используем их для вывода ссылки -->
-          {{ btn(item.title, item.url, true) }}
-          {{ btn("Картинка", item.url ~ "/image", false) }}
-          {{ btn("Описание", item.url ~ "/info", false) }}
+          {{ btn(item.title, item.url, true, "info") }}
+          {{ btn("Картинка", item.url ~ "/image", false, "primary") }}
+          {{ btn("Описание", item.url ~ "/info", false, "primary") }}
         </li>
       {% endif %}
     {% endfor %}

@@ -1,5 +1,16 @@
-{% macro btn(textContent, url, is_active) %}
-<a href="{{url}}" class="btn {{ is_active ? 'btn-primary' : 'btn-link'}} ">
-    {{ textContent }}
-</a>
+{% macro btn(textContent, url, is_active, status) %}
+    {% if status == "primary" %}
+        <a href="{{url}}" class="btn {{ is_active ? 'btn-primary' : 'btn-link'}}">
+            {{ textContent }}
+        </a>
+    {% elseif status == "info" %}
+        <a href="{{url}}" class="btn {{ is_active ? 'btn-info' : 'btn-link'}}">
+            {{ textContent }}
+        </a>
+    {% elseif status == "disabled" %}
+        <a href="{{url}}" class="btn {{ is_active ? 'btn-disabled' : 'btn-link'}}">
+            {{ textContent }}
+        </a>
+    {% endif %}
+
 {% endmacro %}
