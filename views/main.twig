@@ -2,6 +2,27 @@
 {% extends "__layout.twig" %}
 
 {% block content %}
+
+<div class="container d-flex" style="margin-top: 20px;">
+  {% for object in films_objects %}
+    <div class="card" style="width: 18rem; margin: 0.5rem; background-color: #161616;">
+      <img class="card-img-top" style="height: 230px; object-fit: cover;" src="{{ object.image }}" alt="Card image cap">
+      <div class="card-body">
+        <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 80px; text-align: center; margin: 5px auto; width: 96%;">{{ object.title }}</a>
+        <div class="btn-wrap d-flex">
+          <a href="#" class="btn btn-link">Картинка</a>
+          <a href="#" class="btn btn-link">Описание</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+
+<pre>
+  {{ dump(films_objects) }} <!-- добавил вывод данных -->
+</pre>
+
 <ul class="list-group" style="margin-top: 25px;">
     {% for item in menu %}
       {% if loop.index0 != 0 %}

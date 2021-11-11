@@ -10,15 +10,22 @@ require_once "../controllers/AvengersInfoController.php";
 require_once "../controllers/ShoushenkaInfoController.php"; 
 
 
-// создаем загрузчик шаблонов, и указываем папку с шаблонами
-// \Twig\Loader\FilesystemLoader -- это типа как в C# писать Twig.Loader.FilesystemLoader, 
-// только слеш вместо точек
+// создаем экземпляр класса и передаем в него параметры подключения
+// создание класса автоматом открывает соединение
+$pdo = new PDO("mysql:host=localhost;dbname=kinopoisk;charset=utf8", "root", "");
+
+
+$url = $_SERVER["REQUEST_URI"];
+
+
 $loader = new \Twig\Loader\FilesystemLoader('../views');
 
 // создаем собственно экземпляр Twig с помощью которого будет рендерить
-$twig = new \Twig\Environment($loader);
+$twig = new \Twig\Environment($loader, [
+    "debug" => true
+]);
 
-$url = $_SERVER["REQUEST_URI"];
+$twig->addExtension(new \Twig\Extension\DebugExtension());
 
 // добавил две переменные
 $title = "";
@@ -61,5 +68,6 @@ if ($url == "/") {
 
 // проверяем если controller не пустой, то рендерим страницу
 if ($controller) {
+    $controller->setPDO($pdo);
     $controller->get();
 }
