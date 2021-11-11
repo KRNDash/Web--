@@ -16,6 +16,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=kinopoisk;charset=utf8", "root", "")
 
 
 $url = $_SERVER["REQUEST_URI"];
+//2123W
 
 
 $loader = new \Twig\Loader\FilesystemLoader('../views');
