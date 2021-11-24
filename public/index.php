@@ -2,14 +2,12 @@
 
 require_once "../framework/autoload.php";
 require_once "../vendor/autoload.php";
+
 require_once "../controllers/ObjectController.php";
+require_once "../controllers/ImageController.php";
+require_once "../controllers/InfoController.php";
+
 require_once "../controllers/MainController.php";
-require_once "../controllers/AvengersController.php"; 
-require_once "../controllers/ShoushenkaController.php"; 
-require_once "../controllers/AvengersImageController.php"; 
-require_once "../controllers/ShoushenkaImageController.php"; 
-require_once "../controllers/AvengersInfoController.php"; 
-require_once "../controllers/ShoushenkaInfoController.php";
 require_once "../controllers/Controller404.php";
 
 // $url = $_SERVER["REQUEST_URI"];
@@ -30,9 +28,9 @@ $pdo = new PDO("mysql:host=localhost;dbname=kinopoisk;charset=utf8", "root", "")
 
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
-$router->add("/avengers", AvengersController::class);
 $router->add("/films-objects/(?P<id>\d+)", ObjectController::class); 
-
+$router->add("/films-objects/(?P<id>\d+)/image", ImageController::class); 
+$router->add("/films-objects/(?P<id>\d+)/info", InfoController::class); 
 
 $router->get_or_default(Controller404::class);
 
@@ -41,6 +39,7 @@ $title = "";
 $template = "";
 $image = "";
 $text = "";
+$id = "";
 
 
 $context = [];

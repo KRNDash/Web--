@@ -1,14 +1,13 @@
 <?php
-require_once "ShoushenkaController.php";
+require_once "ObjectController.php";
 
-class ShoushenkaImageController extends ShoushenkaController {
+class ImageController extends ObjectController {
     public $template = "image.twig";
 
     public function getContext() : array {
         $context = parent::getContext();
         $context['is_image'] = true;
-        $context['image'] = "/images/pobeg.jpg";
-
+        
         return $context;
     }
 }
