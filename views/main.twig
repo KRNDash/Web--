@@ -8,10 +8,10 @@
     <div class="card" style="width: 18rem; margin: 0.5rem; background-color: #161616;">
       <img class="card-img-top" style="height: 230px; object-fit: cover;" src="{{ object.image }}" alt="Card image cap">
       <div class="card-body">
-        <a href="#" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 80px; text-align: center; margin: 5px auto; width: 96%;">{{ object.title }}</a>
+        <a href="/films-objects/{{ object.id }}" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 80px; text-align: center; margin: 5px auto; width: 96%;">{{ object.title }}</a>
         <div class="btn-wrap d-flex">
-          <a href="#" class="btn btn-link">Картинка</a>
-          <a href="#" class="btn btn-link">Описание</a>
+          <a href="/films-objects/{{ object.id }}/image" class="btn btn-link">Картинка</a>
+          <a href="/films-objects/{{ object.id }}/info" class="btn btn-link">Описание</a>
         </div>
       </div>
     </div>

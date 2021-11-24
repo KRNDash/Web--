@@ -1,5 +1,5 @@
 <?php
-require_once "TwigBaseController.php"; // импортим TwigBaseController
+// require_once "TwigBaseController.php"; // импортим TwigBaseController
 
 class AvengersController extends TwigBaseController {
     public $template = "__object.twig";
