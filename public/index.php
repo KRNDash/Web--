@@ -4,8 +4,6 @@ require_once "../framework/autoload.php";
 require_once "../vendor/autoload.php";
 
 require_once "../controllers/ObjectController.php";
-require_once "../controllers/ImageController.php";
-require_once "../controllers/InfoController.php";
 
 require_once "../controllers/MainController.php";
 require_once "../controllers/BaseFilmTwigController.php";
