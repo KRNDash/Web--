@@ -7,11 +7,6 @@ class TwigBaseController extends BaseController {
     public $template = ""; // шаблон страницы
     protected \Twig\Environment $twig; // ссылка на экземпляр twig, для рендернига
 
-    // public function __construct($twig)
-    // {
-    //     $this->twig = $twig; // пробрасываем его внутрь
-    // }
-    
     public function setTwig($twig) {
         $this->twig = $twig;
     }
@@ -23,29 +18,16 @@ class TwigBaseController extends BaseController {
         $context = parent::getContext(); // вызываем родительский метод
         $context['title'] = $this->title; // добавляем title в контекст
 
-        $menu = [
-            [
-                "title" => "Главная",
-                "url" => "/",
-            ],
-            [
-                "title" => "Мстители",
-                "url" => "/avengers",
-            ],
-            [
-                "title" => "Побег из Шоушенка",
-                "url" => "/shoushenka",
-            ]
-        ];
-        
-        $context['menu'] = $menu; // передаем меню в контекст
-
         return $context;
     }
     
     // функция гет, рендерит результат используя $template в качестве шаблона
     // и вызывает функцию getContext для формирования словаря контекста
     public function get() {
-        echo $this->twig->render($this->template, $this->getContext());
+        echo $this->twig->render($this->getTemplate(), $this->getContext());
+    }
+
+    public function getTemplate() {
+        return $this->template;
     }
 }

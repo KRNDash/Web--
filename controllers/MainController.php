@@ -1,7 +1,7 @@
 <?php
-// require_once "TwigBaseController.php"; // импортим TwigBaseController
+require_once "BaseFilmTwigController.php"; // импортим TwigBaseController
 
-class MainController extends TwigBaseController {
+class MainController extends BaseFilmTwigController {
     public $template = "main.twig";
     public $title = "Главная";
 
@@ -9,11 +9,15 @@ class MainController extends TwigBaseController {
     {
         $context = parent::getContext();
         
-        // подготавливаем запрос SELECT * FROM space_objects
-        // вообще звездочку не рекомендуется использовать, но на первый раз пойдет
-        $query = $this->pdo->query("SELECT * FROM films_objects");
-        
-        // стягиваем данные через fetchAll() и сохраняем результат в контекст
+        if (isset($_GET['type'])) {
+            $query = $this->pdo->prepare("SELECT * FROM films_objects WHERE type= :type");
+            $query->bindValue("type", $_GET['type']);
+            $query->execute();
+
+        } else {
+            $query = $this->pdo->query("SELECT * FROM films_objects");
+        }
+
         $context['films_objects'] = $query->fetchAll();
 
         return $context;

@@ -1,7 +1,24 @@
 <?php
+require_once "BaseFilmTwigController.php";
 
-class ObjectController extends TwigBaseController {
+
+class ObjectController extends BaseFilmTwigController {
     public $template = "__object.twig"; // указываем шаблон
+
+
+    public function getTemplate() {
+        if (isset($_GET['show'])){
+            if(($_GET['show'])=="image"){
+                return "image.twig";
+            }
+            if(($_GET['show'])=="info"){
+                return "info.twig";
+            }
+        } else {
+            return parent::getTemplate();
+        }
+    }
+
 
     public function getContext(): array
     {
@@ -17,8 +34,17 @@ class ObjectController extends TwigBaseController {
         $context['id'] = $data['id'];
         $context['title'] = $data['title'];
         $context['description'] = $data['description'];
-        $context['info'] = $data['info'];
-        $context['image'] = $data['image'];
+
+        if (isset($_GET['show'])){
+            if(($_GET['show'])=="image"){
+                $context['is_image'] = true;
+                $context['image'] = $data['image'];
+            }
+            if(($_GET['show'])=="info"){
+                $context['is_info'] = true;
+                $context['info'] = $data['info'];
+            }
+        }
 
         return $context;
     }
