@@ -1,0 +1,30 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    Поиск
+
+    <form action="">
+        <div class="d-flex" style="flex-direction: row; margin-bottom: 20px;">
+            <label style="color: white; padding-top: 15px">Жанр <select class="form-control form-control-lg" name="type">
+                <option value="Все">Все</option>
+                {% for type in types %}
+                    <option value="{{ type.type }}">{{ type.type|title }}</option>
+                {% endfor %}
+                </select>
+            </label> 
+
+            <label style="color: white; padding-top: 15px; margin-left: 30px;">Название <input class="form-control form-control-lg" type="text" name="title"></label>  
+            <label style="color: white; padding-top: 15px; margin-left: 30px;">Описание <input class="form-control form-control-lg" type="text" name="info"></label>  
+        </div>
+        
+        <button class="btn btn-lg btn-primary mb-3" type="submit">Найти</button>
+    </form>
+
+    <h2 style="color: white; padding-bottom: 40px;">Результаты поиска</h2>
+    <div>
+        {% for el in objects %}
+            <a href="/films-objects/{{ el.id }}" style="background-color: rgb(32, 32, 32); padding: 25px; border-radius: 15px; color: white; margin: 5px;">{{ el.title }}</a>
+        {% endfor %}
+    </div>
+
+{% endblock %}
