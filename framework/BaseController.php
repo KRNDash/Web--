@@ -14,10 +14,24 @@ abstract class BaseController {
         $this->pdo = $pdo;
     }
 
+    // новая функция
+    public function process_response() {
+        $method = $_SERVER['REQUEST_METHOD'];
+        $context = $this->getContext(); // вызываю context тут
+        if ($method == 'GET') {
+            $this->get($context); // а тут просто его пробрасываю внутрь
+        } else if ($method == 'POST') {
+            $this->post($context); // и здесь
+        }
+    }
+
+
+
     public function getContext(): array {
         return []; // по умолчанию пустой контекст
     }
     
     // с помощью функции get будет вызывать непосредственно рендеринг
-    abstract public function get();
+    public function get(array $context) {}
+    public function post(array $context) {}
 }

@@ -19,7 +19,7 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  padding: 1.2rem 0;
+  padding: 0;
   font-family: "Lato", sans-serif;
   font-weight: 700;
 }
@@ -29,7 +29,7 @@
   text-transform: uppercase;
   font-weight: 500;
   font-size: 0.8rem;
-  padding: 1.2rem 1.5rem;
+  padding: 0.4rem 1.5rem;
   height: 100%;
   color: #fff;
   position: relative;
@@ -60,11 +60,66 @@ h1 {
   font-weight: 900;
 }
 
+label {
+  color: white; 
+  padding-top: 15px; 
+  margin-right: 30px;
+}
+
+.submenu {
+  position: absolute;
+  z-index: 5;
+  min-width: 150px;
+  background: rgb(20, 20, 20);
+  visibility: hidden;
+  opacity: 0; 
+  padding-left: 0;
+  transform-origin: 0% 0%;
+  transform: rotateX(-90deg);
+  transition: .3s linear;  
+}
+
+.topmenu > li > a.active, 
+.submenu a:hover {color: #ddbe86;}
+.topmenu .fa, 
+.submenu .fa {
+  margin-left: 5px;
+  color: inherit;
+}
+
+.submenu li {position: relative;}
+.submenu li a {
+  color: #282828;
+  padding: 5px 5px;
+  font-size: 13px;
+}
+/* .submenu .submenu {
+  position: absolute;
+  left: 100%;
+  top: -1px;
+  transition: .3s linear;
+} */
+nav li:hover > .submenu {
+  transform: rotateX(0deg);
+  visibility: visible;
+  opacity: 1;
+}
+
+
+.result_a {
+  background-color: rgb(32, 32, 32); 
+  padding: 25px; 
+  border-radius: 15px; 
+  color: white; 
+  margin: 5px;
+}
+
 .title_h2 {
   color: #fff;
   padding-top: 20px;
+  margin-bottom: 50px;
   font-family: "Lato", sans-serif;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .list-group-item {

@@ -1,0 +1,26 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h2 class="title_h2">Добавление жанра</h2>
+
+    {% if message %}
+    <div class="alert alert-info">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    <form class="row g-3" method="post" enctype="multipart/form-data">
+        <div class="col-4">
+            <label class="form-label">Название жанра</label>
+            <input type="text" class="form-control form-control-lg" name="name">
+        </div>
+        <div>
+            <label for="formFileLg" class="form-label">Картинка</label>
+            <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+          </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-lg btn-primary">Добавить</button>
+        </div>
+    </form>
+
+{% endblock %}

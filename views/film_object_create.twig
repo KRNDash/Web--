@@ -1,0 +1,42 @@
+{% extends "__layout.twig" %}
+
+{% block content %}
+    <h2 class="title_h2">Добавление фильма</h2>
+
+    {% if message %}
+    <div class="alert alert-info">
+        {{ message }}
+        <a href="/films-objects/{{ id }}">открыть новый фильм</a>
+    </div>
+    {% endif %}
+
+    <form class="row g-3" method="post" enctype="multipart/form-data">
+        <div class="col-4">
+            <label class="form-label">Название</label>
+            <input type="text" class="form-control form-control-lg" name="title">
+        </div>
+        <div class="col-4">
+            <label class="form-label">Краткое описание</label>
+            <input type="text" placeholder="Супергеройское кино" class="form-control form-control-lg" name="description">
+        </div>
+        <div class="col-4">
+            <label class="form-label">Жанр</label>
+            <select class="form-control form-control-lg" name="type">
+                {% for type in types %}
+                    <option value="{{ type.name }}">{{ type.name|title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-12">
+            <textarea name="info" placeholder="Полное описание..." class="form-control form-control-lg" rows="5"></textarea>
+        </div>
+        <div>
+            <label for="formFileLg" class="form-label">Картинка</label>
+            <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+          </div>
+        <div class="col-12 text-end">
+            <button type="submit" class="btn btn-lg btn-primary">Добавить</button>
+        </div>
+    </form>
+
+{% endblock %}

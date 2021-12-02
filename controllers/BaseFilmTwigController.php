@@ -6,7 +6,7 @@ class BaseFilmTwigController extends TwigBaseController {
     {
         $context = parent::getContext();
 
-        $query = $this->pdo->query("SELECT DISTINCT type FROM films_objects ORDER BY 1");
+        $query = $this->pdo->query("SELECT DISTINCT name FROM genres ORDER BY 1");
         $types = $query->fetchAll();
         
         $context['types'] = $types;

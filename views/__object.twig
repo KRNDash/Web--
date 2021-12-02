@@ -11,7 +11,13 @@
         </ul>
     </div>
     {% block objectContent %}
-    
+        {% if is_image == true %}
+            <img class="image_wrap" src="{{ image }}" alt="">
+        {% endif %}
+
+        {% if is_info == true %}
+            <div class="text_wrap">{{ info }}</div>
+        {% endif %}
     {% endblock %}
 
 {% endblock %}

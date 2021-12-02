@@ -6,6 +6,9 @@ require_once "../vendor/autoload.php";
 require_once "../controllers/ObjectController.php";
 
 require_once "../controllers/SearchController.php";
+require_once "../controllers/FilmObjectCreateController.php";
+require_once "../controllers/GenreObjectCreateController.php";
+
 require_once "../controllers/MainController.php";
 require_once "../controllers/BaseFilmTwigController.php";
 require_once "../controllers/Controller404.php";
@@ -29,7 +32,11 @@ $pdo = new PDO("mysql:host=localhost;dbname=kinopoisk;charset=utf8", "root", "")
 $router = new Router($twig, $pdo);
 $router->add("/", MainController::class);
 $router->add("/films-objects/(?P<id>\d+)", ObjectController::class); 
+
 $router->add("/search", SearchController::class);
+
+$router->add("/films-objects/add", FilmObjectCreateController::class);
+$router->add("/genre/add", GenreObjectCreateController::class);
 
 $router->get_or_default(Controller404::class);
 
