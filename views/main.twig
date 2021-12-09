@@ -5,7 +5,23 @@
 
 <div class="container d-flex" style="margin-top: 20px; flex-wrap: wrap;">
   {% for object in films_objects %}
-    <div class="card" style="width: 18rem; margin: 0.5rem; background-color: #161616;">
+    <div class="card position-relative" style="width: 18rem; margin: 0.5rem; background-color: #161616;">
+      <div class="position-absolute" style="right: 4px; top: 4px;">
+        <form action="/films-objects/delete" method="POST">
+          <input type="hidden" name="id" value="{{ object.id }}">
+          <button type="submit" class="btn btn-danger">
+            <i class="fas fa-times"></i>
+          </button>
+        </form>
+      </div>
+      <div class="position-absolute" style="right: 4px; top: 45px;">
+        <form action="/films-objects/{{ object.id }}/edit" method="GET">
+          <input type="hidden" name="id" value="{{ object.id }}">
+          <button type="submit" class="btn btn-info">
+            <i class="fas fa-edit"></i>
+          </button>
+        </form>
+      </div>
       <img class="card-img-top" style="height: 230px; object-fit: cover;" src="{{ object.image }}" alt="Card image cap">
       <div class="card-body">
         <a href="/films-objects/{{ object.id }}" class="btn btn-primary d-flex align-items-center justify-content-center" style="height: 80px; text-align: center; margin: 5px auto; width: 96%;">{{ object.title }}</a>
@@ -19,9 +35,9 @@
 </div>
 
 
-<pre>
+{# <pre>
   {{ dump(films_objects) }} <!-- добавил вывод данных -->
-</pre>
+</pre> #}
 
 <ul class="list-group" style="margin-top: 25px;">
     {% for item in menu %}

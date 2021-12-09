@@ -7,6 +7,9 @@ require_once "../controllers/ObjectController.php";
 
 require_once "../controllers/SearchController.php";
 require_once "../controllers/FilmObjectCreateController.php";
+require_once "../controllers/FilmObjectDeleteController.php";
+require_once "../controllers/FilmObjectUpdateController.php";
+
 require_once "../controllers/GenreObjectCreateController.php";
 
 require_once "../controllers/MainController.php";
@@ -35,6 +38,8 @@ $router->add("/films-objects/(?P<id>\d+)", ObjectController::class);
 
 $router->add("/search", SearchController::class);
 
+$router->add("/films-objects/delete", FilmObjectDeleteController::class);
+$router->add("/films-objects/(?P<id>\d+)/edit", FilmObjectUpdateController::class);
 $router->add("/films-objects/add", FilmObjectCreateController::class);
 $router->add("/genre/add", GenreObjectCreateController::class);
 
