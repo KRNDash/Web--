@@ -4,19 +4,21 @@
 class FilmObjectDeleteController extends BaseController {
     public function post(array $context)
     {
-        $id = $_POST['id']; // взяли id
+        $query = $controller->pdo->prepare("SELECT username,password,id FROM users WHERE password= :my_password AND username= :my_username");
 
-        $sql =<<<EOL
-DELETE FROM films_objects WHERE id = :id
-EOL; // сформировали запрос
-        
-        // выполнили
-        $query = $this->pdo->prepare($sql);
-        $query->bindValue(":id", $id);
+        $query->bindValue("my_username", isset($_SERVER['PHP_AUTH_USER']) ? $_SERVER['PHP_AUTH_USER'] : '');
+        $query->bindValue("my_password", isset($_SERVER['PHP_AUTH_PW']) ? $_SERVER['PHP_AUTH_PW'] : '');
         $query->execute();
+        $data = $query->fetch();
 
-        // устанавливаем заголовок Location, на новый путь, я хочу перейти на главную страницу поэтому пишу /
-        header("Location: /");
-        exit; // после  header("Location: ...") надо писать exit
+        //сверяем с корректными данными из базы
+        if (!$data) {
+        // если не совпали, надо указать такой заголовок
+        // именно по нему браузер поймет что надо показать окно для ввода юзера/пароля
+        header('WWW-Authenticate: Basic realm="space-objects"');
+        http_response_code(401); // ну и статус 401 — Unauthorized, то есть неавторизован
+        exit; // прерываем выполнение скрипта
+        }
+
     }
 }
