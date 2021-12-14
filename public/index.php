@@ -9,6 +9,7 @@ require_once "../controllers/SearchController.php";
 require_once "../controllers/FilmObjectCreateController.php";
 require_once "../controllers/FilmObjectDeleteController.php";
 require_once "../controllers/FilmObjectUpdateController.php";
+require_once "../controllers/SetWelcomeController.php";
 
 require_once "../controllers/GenreObjectCreateController.php";
 require_once "../middlewares/LoginRequiredMiddleware.php";
@@ -50,6 +51,8 @@ $router->add("/films-objects/add", FilmObjectCreateController::class)
 
 $router->add("/genre/add", GenreObjectCreateController::class)
     ->middleware(new LoginRequiredMiddleware());
+
+    $router->add("/set-welcome/", SetWelcomeController::class);
 
 $router->get_or_default(Controller404::class);
 

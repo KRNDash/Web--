@@ -21,6 +21,10 @@ class ObjectController extends BaseFilmTwigController {
         $context['title'] = $data['title'];
         $context['description'] = $data['description'];
 
+        $context["my_session_message"] = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_message'] : "";
+        $context["messages"] = isset($_SESSION['messages']) ? $_SESSION['messages'] : "";
+
+
         if (isset($_GET['show'])){
             if(($_GET['show'])=="image"){
                 $context['is_image'] = true;

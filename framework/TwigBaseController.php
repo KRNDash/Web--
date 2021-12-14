@@ -17,7 +17,8 @@ class TwigBaseController extends BaseController {
         
         $context = parent::getContext(); // вызываем родительский метод
         $context['title'] = $this->title; // добавляем title в контекст
-
+        $context["history_list"] = isset($_SESSION['history_list']) ? $_SESSION['history_list'] : "";
+        $context['history_list'] = array_reverse($_SESSION['history_list']);
         return $context;
     }
     
